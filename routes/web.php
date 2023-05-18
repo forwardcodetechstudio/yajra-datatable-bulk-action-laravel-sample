@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('users', [UserController::class, 'index'])->name('users.index');
+Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::delete('user/deleteSelected', [ UserController::class, 'deletesSelectedUsers'])->name('user.deleteSelected');
+Route::post('user/changeStatusSelected', [UserController::class, 'changeStatusSelected'])->name('user.changeStatusSelected');
